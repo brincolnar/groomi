@@ -12,7 +12,7 @@ function Hero() {
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black/50" aria-hidden="true"></div>
-      <div className="relative z-10 mx-auto max-w-6xl px-4 pt-36 pb-16">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-16 md:pt-36">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
           {/* Left column: copy + reservation card below */}
           <div className="flex flex-col items-start gap-6">

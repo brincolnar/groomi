@@ -1,13 +1,15 @@
+import { useState } from 'react'
 import groomiLogo from '../assets/groomilogo.png'
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false)
   return (
     <header className="absolute inset-x-0 top-0 z-20 bg-transparent">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-3 items-center py-4">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <img src={groomiLogo} alt="Groomi logo" className="h-[104px] w-auto invert brightness-0" />
+            <img src={groomiLogo} alt="Groomi logo" className="h-16 w-auto invert brightness-0 md:h-[104px]" />
           </div>
 
           {/* Nav */}
@@ -21,7 +23,7 @@ function Header() {
           </nav>
 
           {/* CTA */}
-          <div className="justify-self-end">
+          <div className="hidden justify-self-end md:block">
             <a
               href="#rezervacija"
               className="inline-flex items-center gap-2 rounded-lg border border-transparent bg-[#fca95c] px-5 py-2 text-sm font-semibold text-neutral-900 shadow-[0_8px_20px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#f99949] hover:shadow-[0_12px_28px_rgba(0,0,0,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fca95c]/40"
@@ -30,7 +32,38 @@ function Header() {
               <span aria-hidden="true" className="text-lg">→</span>
             </a>
           </div>
+
+          {/* Mobile menu button */}
+          <div className="justify-self-end md:hidden">
+            <button
+              type="button"
+              aria-label="Odpri meni"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+              className="inline-flex items-center justify-center rounded-md bg-white/10 p-2 text-white backdrop-blur-md ring-1 ring-white/20"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+                {menuOpen ? (
+                  <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 11-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd" />
+                ) : (
+                  <path fillRule="evenodd" d="M3.75 5.25a.75.75 0 01.75-.75h15a.75.75 0 010 1.5h-15a.75.75 0 01-.75-.75zm0 6a.75.75 0 01.75-.75h15a.75.75 0 010 1.5h-15a.75.75 0 01-.75-.75zm0 6a.75.75 0 01.75-.75h15a.75.75 0 010 1.5h-15a.75.75 0 01-.75-.75z" clipRule="evenodd" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
+        {/* Mobile menu panel */}
+        {menuOpen && (
+          <div className="mt-2 rounded-lg bg-neutral-900/90 p-4 text-white shadow-lg backdrop-blur-md ring-1 ring-white/15 md:hidden">
+            <div className="flex flex-col gap-2">
+              <a href="#" className="rounded px-2 py-2 hover:bg-white/10">Domov</a>
+              <a href="#" className="rounded px-2 py-2 hover:bg-white/10">Ponudba</a>
+              <a href="#" className="rounded px-2 py-2 hover:bg-white/10">Kontakt</a>
+              <a href="#" className="rounded px-2 py-2 hover:bg-white/10">Ekipa</a>
+              <a href="#rezervacija" className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg border border-transparent bg-[#fca95c] px-4 py-2 text-sm font-semibold text-neutral-900 shadow">Naroči se</a>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   )
