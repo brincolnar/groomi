@@ -34,7 +34,7 @@ function Header() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="justify-self-end md:hidden">
+          <div className="md:hidden absolute right-2 top-4 z-30">
             <button
               type="button"
               aria-label="Odpri meni"

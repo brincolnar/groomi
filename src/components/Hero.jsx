@@ -1,16 +1,22 @@
 import heroImage from '../assets/hero.jpg'
+import heroWebp from '../assets/hero.webp'
 
 function Hero() {
   return (
-    <main
-      className="relative text-white"
-      style={{
-        backgroundImage: `url(${heroImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+    <main className="relative overflow-hidden text-white">
+      <div aria-hidden="true" className="absolute inset-0">
+        <picture>
+          <source type="image/webp" srcSet={heroWebp} />
+          <img
+            src={heroImage}
+            alt=""
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            className="h-full w-full object-cover"
+          />
+        </picture>
+      </div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black/50" aria-hidden="true"></div>
       <div className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-16 md:pt-36">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
