@@ -38,7 +38,7 @@ function Cenik() {
   }
 
   return (
-    <section id="cenik" className="bg-[#49403c] py-28 md:py-36 text-white">
+    <section id="cenik" className="bg-groomiblue py-28 md:py-36 text-white">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:items-start">
           <div>
@@ -54,15 +54,15 @@ function Cenik() {
           </div>
 
           <div>
-            <div className="rounded-lg bg-[#ebe1cc] p-10 shadow-sm">
-              <p className="text-sm leading-6 text-neutral-700">{testimonial.quote}</p>
-              <div className="mt-8 text-sm font-semibold text-neutral-900">{testimonial.author}</div>
+            <div className="rounded-lg bg-groomizenf p-10 shadow-sm">
+              <p className="text-sm leading-6 text-groomiblue">{testimonial.quote}</p>
+              <div className="mt-8 text-sm font-semibold text-groomiblue">{testimonial.author}</div>
 
               <div className="mt-6 flex items-center gap-3" aria-hidden="true">
                 {testimonials.map((_, index) => (
                   <span
                     key={index}
-                    className={'h-0.5 w-10 ' + (index === activeIndex ? 'bg-neutral-900' : 'bg-neutral-300')}
+                    className={'h-0.5 w-10 ' + (index === activeIndex ? 'bg-groomiblue' : 'bg-groomizenf-dark')}
                   />
                 ))}
               </div>
@@ -71,7 +71,7 @@ function Cenik() {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-black text-lg text-neutral-700 hover:bg-white"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-groomizenf-dark text-lg text-groomizenf-dark hover:bg-groomizenf-dark"
                   aria-label="Prejšnja izjava"
                 >
                   ←
@@ -79,7 +79,7 @@ function Cenik() {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-black text-lg text-neutral-700 hover:bg-white"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-groomizenf-dark text-lg text-groomizenf-dark hover:bg-groomizenf-dark"
                   aria-label="Naslednja izjava"
                 >
                   →

@@ -5,3 +5,10 @@
     font-family: "Crimson Pro", serif;
   }
 }
+
+@theme {
+  --color-groomiblue: #013fae;
+  --color-groomizenf: #efa300;
+  --color-groomizenf-dark: #875100;
+  --color-plantwall: #273f0d;
+}

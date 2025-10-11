@@ -1,5 +1,7 @@
 import barber1 from '../assets/barber1.jpg'
 import barber2 from '../assets/barber2.jpg'
+import plantwall from '../assets/plant.jpg'
+
 const teamMembers = [
   {
     name: 'Sandi Novak',
@@ -91,7 +93,12 @@ function Ekipa() {
             </div>
           ))}
 
-          <div className="flex h-full flex-col justify-between rounded-lg bg-neutral-900 p-8 text-white">
+          <div className="bg-cover flex h-full flex-col justify-between rounded-lg p-8 text-white"
+          style={{
+            backgroundImage: `url(${plantwall})`,
+            backgroundColor: 'rgba(0, 0, 0, 0.4)',
+            backgroundBlendMode: 'darken',         
+          }}>
             <div>
               <h3 className="text-lg font-semibold">{hiringCard.title}</h3>
               <p className="mt-4 text-sm leading-6 text-neutral-200">{hiringCard.description}</p>

@@ -1,6 +1,9 @@
+
+
 function Kontakt() {
+
   return (
-    <section id="kontakt" className="bg-[#49403c] py-28 md:py-36 text-white">
+    <section id="kontakt" className="bg-groomizenf py-28 md:py-36 text-white bg-cover">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
           {/* Left: title, paragraph, button */}
