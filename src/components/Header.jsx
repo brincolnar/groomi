@@ -25,8 +25,8 @@ function Header() {
           {/* CTA */}
           <div className="hidden justify-self-end md:block">
             <a
-              href="#rezervacija"
-              className="inline-flex items-center gap-2 rounded-lg border border-transparent bg-groomizenf px-5 py-2 text-sm font-semibold text-neutral-900 shadow-[0_8px_20px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#ed570c] hover:shadow-[0_12px_28px_rgba(0,0,0,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fca95c]/40"
+              href="http://form.lime-booking.com/sl/groomi"
+              className="inline-flex items-center gap-2 rounded-lg border border-transparent bg-groomizenf-dark px-5 py-2 text-sm font-semibold text-black shadow-[0_8px_20px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#ed570c] hover:shadow-[0_12px_28px_rgba(0,0,0,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fca95c]/40"
             >
               <span className="text-base font-medium tracking-wide">Naroči se</span>
               <span aria-hidden="true" className="text-lg">→</span>

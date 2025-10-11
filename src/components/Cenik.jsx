@@ -38,14 +38,14 @@ function Cenik() {
   }
 
   return (
-    <section id="cenik" className="bg-groomiblue py-28 md:py-36 text-white">
+    <section id="cenik" className="bg-groomiblue py-28 md:py-36 text-black">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:items-start">
           <div>
             <h2 className="text-3xl font-semibold md:text-4xl">Cenik</h2>
-            <ul className="mt-10 space-y-6 text-sm uppercase tracking-wide text-white">
+            <ul className="mt-10 space-y-6 text-sm uppercase tracking-wide text-black">
               {priceList.map((item) => (
-                <li key={item.name} className="flex items-center justify-between border-b border-white/30 pb-3">
+                <li key={item.name} className="flex items-center justify-between border-b border-black pb-3">
                   <span>{item.name}</span>
                   <span className="font-medium">{item.price}</span>
                 </li>
@@ -55,8 +55,8 @@ function Cenik() {
 
           <div>
             <div className="rounded-lg bg-groomizenf p-10 shadow-sm">
-              <p className="text-sm leading-6 text-groomiblue">{testimonial.quote}</p>
-              <div className="mt-8 text-sm font-semibold text-groomiblue">{testimonial.author}</div>
+              <p className="text-sm leading-6 text-black">{testimonial.quote}</p>
+              <div className="mt-8 text-sm font-semibold text-black">{testimonial.author}</div>
 
               <div className="mt-6 flex items-center gap-3" aria-hidden="true">
                 {testimonials.map((_, index) => (
@@ -71,7 +71,7 @@ function Cenik() {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-groomizenf-dark text-lg text-groomizenf-dark hover:bg-groomizenf-dark"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-groomiblue text-lg text-groomiblue hover:bg-groomizenf-dark"
                   aria-label="Prejšnja izjava"
                 >
                   ←
@@ -79,7 +79,7 @@ function Cenik() {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-groomizenf-dark text-lg text-groomizenf-dark hover:bg-groomizenf-dark"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-groomiblue text-lg text-groomiblue hover:bg-groomizenf-dark"
                   aria-label="Naslednja izjava"
                 >
                   →

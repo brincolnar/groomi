@@ -46,7 +46,7 @@ function Gallery() {
   }, [activeItem])
 
   return (
-    <section id="galerija" className="bg-groomiblue text-white py-16">
+    <section id="galerija" className="bg-white text-black py-16">
       <div className="mx-auto max-w-6xl px-4">
         <div className="text-center">
           <h2 className="text-3xl font-semibold md:text-4xl">Stil, ki pove več kot besede</h2>

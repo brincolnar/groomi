@@ -7,8 +7,10 @@
 }
 
 @theme {
-  --color-groomiblue: #013fae;
-  --color-groomizenf: #efa300;
-  --color-groomizenf-dark: #875100;
-  --color-plantwall: #273f0d;
+  --color-groomiblue: #8EACCD;
+  --color-groomiblue-dark: #4E7EB1;
+  --color-groomiblue-verydark: #325171;
+  --color-groomizenf: #FEF9D9;
+  --color-groomizenf-dark: #FCEB81;
+  --color-plantwall: #C3E38D;
 }
