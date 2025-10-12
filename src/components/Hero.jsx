@@ -102,9 +102,7 @@ function Hero() {
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            Odkrijte edinstveno doživetje, kjer se strokovna natančnost sreča z nepozabno atmosfero. 
-            Pri nas vsak obisk postane ritual, ki vas bo navdušil od prve do zadnje minute – 
-            od perfekcije striženja do sproščujoče izkušnje, ki jo boste želeli ponoviti.
+            Strokovna natančnost, nepozabna atmosfera. Vsak obisk je ritual, ki te bo navdušil.
           </p>
           
           <div className={`transition-all duration-1000 delay-300 ${
@@ -113,7 +111,7 @@ function Hero() {
               : 'opacity-0 translate-y-8'
           }`}>
             <a
-              href="http://form.lime-booking.com/sl/groomi"
+              href="http://form.lime-bookin g.com/sl/groomi"
               className="inline-flex items-center gap-3 rounded-lg bg-groomizenf px-8 py-4 text-lg font-bold text-black shadow-[0_8px_20px_rgba(0,0,0,0.25)] transition-all duration-150 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(0,0,0,0.3)]"
             >
               <span>Naroči se zdaj</span>
