@@ -1,10 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const priceList = [
-  { name: 'Buzz cut', price: '20€' },
-  { name: 'Striženje', price: '35€' },
-  { name: 'Striženje + beard trim', price: '50€' },
-  { name: 'Premium care', price: '70€' },
+  { name: 'Frizura', price: '25€' },
+  { name: 'Brada', price: '10€' },
+  { name: 'Frizura + Brada', price: '30€' },
 ]
 
 const testimonials = [
@@ -27,7 +26,70 @@ const testimonials = [
 
 function Cenik() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [visibleItems, setVisibleItems] = useState([])
+  const [titleVisible, setTitleVisible] = useState(false)
+  const sectionRef = useRef(null)
+  const titleRef = useRef(null)
   const testimonial = testimonials[activeIndex]
+
+  // Animate title
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTitleVisible(true)
+          } else {
+            setTitleVisible(false)
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current)
+    }
+
+    return () => {
+      if (titleRef.current) {
+        observer.unobserve(titleRef.current)
+      }
+    }
+  }, [])
+
+  // Animate price items
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Reset and sequentially reveal items with delay
+            setVisibleItems([])
+            priceList.forEach((_, index) => {
+              setTimeout(() => {
+                setVisibleItems((prev) => [...new Set([...prev, index])])
+              }, index * 300) // 300ms delay between each item
+            })
+          } else {
+            // Reset when scrolling away
+            setVisibleItems([])
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))
@@ -38,16 +100,35 @@ function Cenik() {
   }
 
   return (
-    <section id="cenik" className="bg-groomiblue py-28 md:py-36 text-black">
+    <section id="cenik" ref={sectionRef} className="bg-groomiblue py-28 md:py-36 text-black">
       <div className="mx-auto max-w-6xl px-4">
+        <div 
+          ref={titleRef}
+          className={`mb-16 transition-all duration-1000 ${
+            titleVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <h2 className="text-3xl font-bold text-white md:text-5xl">What's <span className="text-groomizenf">the</span> Damage? 💈</h2>
+          <p className="text-xl text-white/80 mt-4">Stay sharp — brez da režeš proračun.</p>
+        </div>
         <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:items-start">
           <div>
-            <h2 className="text-3xl font-semibold md:text-4xl">Cenik</h2>
-            <ul className="mt-10 space-y-6 text-sm uppercase tracking-wide text-black">
-              {priceList.map((item) => (
-                <li key={item.name} className="flex items-center justify-between border-b border-black pb-3">
-                  <span>{item.name}</span>
-                  <span className="font-medium">{item.price}</span>
+            <ul className="space-y-8">
+              {priceList.map((item, index) => (
+                <li 
+                  key={item.name} 
+                  className={`transition-all duration-700 ${
+                    visibleItems.includes(index)
+                      ? 'opacity-100 translate-x-0'
+                      : 'opacity-0 -translate-x-12'
+                  }`}
+                >
+                  <div className="text-white">
+                    <div className="text-4xl font-bold mb-2 md:text-5xl">{item.name}</div>
+                    <div className="text-6xl font-black text-groomizenf md:text-7xl">{item.price}</div>
+                  </div>
                 </li>
               ))}
             </ul>

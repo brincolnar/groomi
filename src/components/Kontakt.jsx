@@ -3,7 +3,7 @@
 function Kontakt() {
 
   return (
-    <section id="kontakt" className="bg-groomizenf py-28 md:py-36 text-black bg-cover">
+    <section id="kontakt" className="bg-white py-28 md:py-36 text-black bg-cover">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
           {/* Left: title, paragraph, button */}
@@ -35,7 +35,7 @@ function Kontakt() {
                     style={{ border: 0 }}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps?q=Breznikova%20cesta%2015%2C%20Dom%C5%BEale&output=embed"
+                    src="https://www.google.com/maps?q=Ljubljanska%2081%2C%20Dom%C5%BEale%201230&output=embed"
                   ></iframe>
                 </div>
               </div>
@@ -46,7 +46,7 @@ function Kontakt() {
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded bg-groomiblue-dark p-1.5">
                     <i className="fa-solid fa-location-dot text-groomizenf text-xl" aria-hidden="true"></i>
                   </div>
-                  <div className="text-md">Breznikova cesta<br />15, Domžale</div>
+                  <div className="text-md">Ljubljanska 81<br />Domžale 1230</div>
                 </div>
 
                 <div className="flex items-center gap-5">

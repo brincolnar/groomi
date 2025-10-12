@@ -1,116 +1,153 @@
-import barber1 from '../assets/barber1.jpg'
-import barber2 from '../assets/barber2.jpg'
-import plantwall from '../assets/plant.jpg'
+import { useState, useEffect, useRef } from 'react'
+import majPhoto from '../assets/maj.jpg'
+import sandiPhoto from '../assets/sandi.png'
 
 const teamMembers = [
   {
-    name: 'Sandi Novak',
-    role: 'Master barber',
-    description:
-      'Sandi je specialist za klasične fade in natančno oblikovanje brade. Za vsakega gosta si vzame čas in poskrbi, da styling sledi osebnemu značaju.',
-    photo: barber1,
-    socials: {
-      instagram: 'https://instagram.com/groomi',
-      linkedin: 'https://linkedin.com',
-    },
-  },
-  {
-    name: 'Maj Stanič',
+    name: 'Maj',
+    fullName: 'Maj Stanič',
+    extension: 'a',
     role: 'Stylist',
     description:
       'Maj združuje trendovske kroje in sproščeno energijo. Lotil se bo tudi najbolj zahtevnih idej in jih prilagodil tvojemu obrazu.',
-    photo: barber2,
-    socials: {
-      instagram: 'https://instagram.com/groomi',
-      linkedin: 'https://linkedin.com',
-    },
+    photo: majPhoto,
+  },
+  {
+    name: 'Sandi',
+    extension: 'ja',
+    fullName: 'Sandi Novak',
+    role: 'Master barber',
+    description:
+      'Sandi je specialist za klasične fade in natančno oblikovanje brade. Za vsakega gosta si vzame čas in poskrbi, da styling sledi osebnemu značaju.',
+    photo: sandiPhoto,
   },
 ]
 
-const hiringCard = {
-  title: 'Pridruži se ekipi',
-  description:
-    'Si kreativen, natančen in uživaš v delu z ljudmi? V našem barber shopu vedno iščemo ambiciozne posameznike, ki želijo rasti skupaj z nami.',
-  cta: 'Prijavi se',
-}
-
 function Ekipa() {
+  const [titleVisible, setTitleVisible] = useState(false)
+  const [visibleMembers, setVisibleMembers] = useState([])
+  const titleRef = useRef(null)
+  const memberRefs = useRef([])
+
+  // Animate main title
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTitleVisible(true)
+          } else {
+            setTitleVisible(false)
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current)
+    }
+
+    return () => {
+      if (titleRef.current) {
+        observer.unobserve(titleRef.current)
+      }
+    }
+  }, [])
+
+  // Animate team members individually
+  useEffect(() => {
+    const observers = memberRefs.current.map((ref, index) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setVisibleMembers((prev) => [...new Set([...prev, index])])
+            } else {
+              setVisibleMembers((prev) => prev.filter((i) => i !== index))
+            }
+          })
+        },
+        { threshold: 0.3 }
+      )
+
+      if (ref) {
+        observer.observe(ref)
+      }
+
+      return observer
+    })
+
+    return () => {
+      observers.forEach((observer, index) => {
+        if (memberRefs.current[index]) {
+          observer.unobserve(memberRefs.current[index])
+        }
+      })
+    }
+  }, [])
+
   return (
     <section id="ekipa" className="bg-white py-28 md:py-36">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-semibold md:text-4xl">Spoznaj našo ekipo</h2>
-          <p className="mt-6 text-md leading-6 text-neutral-700">
-            Naša ekipa ni samo skupina frizerjev – smo predani ustvarjalci stila, ki s strastjo in natančnostjo poskrbimo, da iz salona vedno odidete
-            samozavestni in zadovoljni. Vsak član prinese svoj edinstven talent in izkušnje, skupaj pa gradimo prostor, kjer je moška nega nekaj več kot
-            le striženje – je doživetje.
-          </p>
+        {/* Main title */}
+        <div 
+          ref={titleRef}
+          className={`mb-24 transition-all duration-1000 ${
+            titleVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <h2 className="text-3xl font-bold text-groomiblue md:text-5xl">
+          Tvoji <span className="text-groomizenf">mojstri</span> za škarjami ✂️
+          </h2>
+          <p className="text-xl text-neutral-600 mt-4">Poznamo tvojo glavo bolje kot tvoja bivša.</p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-3">
-          {teamMembers.map((member) => (
-            <div key={member.name} className="flex h-full flex-col rounded-lg bg-white p-8 shadow-sm">
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded bg-neutral-100">
-                <img
-                  src={member.photo}
-                  alt={member.name}
-                  loading="lazy"
-                  decoding="async"
-                  className="block h-full w-full object-cover transform-gpu [backface-visibility:hidden] [image-rendering:auto]"
-                  onError={(e) => { e.currentTarget.style.display = 'none' }}
-                />
-              </div>
-              <div className="mt-6 space-y-4">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-neutral-900">{member.name}</h3>
-                    <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">{member.role}</p>
-                  </div>
-                  <div className="flex gap-3 text-neutral-400">
-                    <a
-                      href={member.socials.instagram}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={'Instagram ' + member.name}
-                      className="transition-colors hover:text-neutral-900"
-                    >
-                      <i className="fa-brands fa-instagram text-lg" aria-hidden="true"></i>
-                    </a>
-                    <a
-                      href={member.socials.linkedin}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={'LinkedIn ' + member.name}
-                      className="transition-colors hover:text-neutral-900"
-                    >
-                      <i className="fa-brands fa-linkedin-in text-lg" aria-hidden="true"></i>
-                    </a>
-                  </div>
+        {/* Team members */}
+        <div className="space-y-32">
+          {teamMembers.map((member, index) => (
+            <div
+              key={member.name}
+              ref={(el) => (memberRefs.current[index] = el)}
+              className={`transition-all duration-1000 ${
+                visibleMembers.includes(index)
+                  ? 'opacity-100 translate-x-0'
+                  : 'opacity-0 -translate-x-12'
+              }`}
+            >
+              <div className={`grid grid-cols-1 gap-12 items-center ${
+                index % 2 === 0 ? 'md:grid-cols-2' : 'md:grid-cols-2'
+              }`}>
+                {/* Text content */}
+                <div className={index % 2 === 0 ? 'md:order-1' : 'md:order-2'}>
+                  <h3 className="text-3xl font-bold text-groomiblue mb-6 md:text-5xl">
+                    Spoznaj <span className="text-groomizenf">{member.name}{member.extension}.</span>
+                  </h3>
+                  <p className="text-xl leading-8 text-neutral-700 mb-4">
+                    {member.description}
+                  </p>
+                  <p className="text-sm uppercase tracking-wide text-neutral-500 font-medium">
+                    {member.role}
+                  </p>
                 </div>
 
-                <p className="text-sm leading-6 text-neutral-700">{member.description}</p>
+                {/* Photo */}
+                <div className={index % 2 === 0 ? 'md:order-2' : 'md:order-1'}>
+                  <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-neutral-100 shadow-2xl">
+                    <img
+                      src={member.photo}
+                      alt={member.fullName}
+                      loading="lazy"
+                      decoding="async"
+                      className="block h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           ))}
-
-          <div className="bg-cover flex h-full flex-col justify-between rounded-lg p-8 text-white"
-          style={{
-            backgroundImage: `url(${plantwall})`,
-            backgroundColor: 'rgba(0, 0, 0, 0.4)',
-            backgroundBlendMode: 'darken',         
-          }}>
-            <div>
-              <h3 className="text-lg font-semibold">{hiringCard.title}</h3>
-              <p className="mt-4 text-sm leading-6 text-neutral-200">{hiringCard.description}</p>
-            </div>
-            <a
-              href="#kontakt"
-              className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-white underline-offset-4 hover:underline"
-            >
-              {hiringCard.cta}
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
         </div>
       </div>
     </section>

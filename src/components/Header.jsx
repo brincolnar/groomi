@@ -9,24 +9,30 @@ function Header() {
         <div className="grid grid-cols-3 items-center py-4">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <img src={groomiLogo} alt="Groomi logo" className="h-16 w-auto invert brightness-0 md:h-[104px]" />
+            <img src={groomiLogo} alt="Groomi logo" className="h-[89px] w-auto invert brightness-0 md:h-[146px]" />
           </div>
 
           {/* Nav */}
           <nav className="hidden md:block justify-self-center">
             <div className="flex items-center gap-6 rounded-md bg-white/10 px-4 py-2 text-white backdrop-blur-md ring-1 ring-white/15">
-              <a href="#" className="rounded bg-white/20 px-2 py-1">Domov</a>
-              <a href="#" className="px-2 py-1">Ponudba</a>
-              <a href="#" className="px-2 py-1">Kontakt</a>
-              <a href="#" className="px-2 py-1">Ekipa</a>
+              <a href="#hero" className="rounded bg-white/20 px-2 py-1">Domov</a>
+              <a href="#cenik" className="px-2 py-1">Ponudba</a>
+              <a href="#kontakt" className="px-2 py-1">Kontakt</a>
+              <a href="#ekipa" className="px-2 py-1">Ekipa</a>
             </div>
           </nav>
 
-          {/* CTA */}
-          <div className="hidden justify-self-end md:block">
+          {/* CTA + Language */}
+          <div className="hidden justify-self-end md:flex items-center gap-4">
+            <button
+              onClick={() => alert('English translation coming soon!')}
+              className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-md transition-all duration-150 hover:bg-white/20"
+            >
+              <span className="text-base font-medium">ENG</span>
+            </button>
             <a
               href="http://form.lime-booking.com/sl/groomi"
-              className="inline-flex items-center gap-2 rounded-lg border border-transparent bg-groomizenf-dark px-5 py-2 text-sm font-semibold text-black shadow-[0_8px_20px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#ed570c] hover:shadow-[0_12px_28px_rgba(0,0,0,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fca95c]/40"
+              className="inline-flex items-center gap-2 rounded-lg border border-transparent bg-groomizenf px-5 py-2 text-sm font-semibold text-black shadow-[0_8px_20px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#ed570c] hover:shadow-[0_12px_28px_rgba(0,0,0,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fca95c]/40"
             >
               <span className="text-base font-medium tracking-wide">Naroči se</span>
               <span aria-hidden="true" className="text-lg">→</span>
@@ -56,11 +62,11 @@ function Header() {
         {menuOpen && (
           <div className="mt-2 rounded-lg bg-neutral-900/90 p-4 text-white shadow-lg backdrop-blur-md ring-1 ring-white/15 md:hidden">
             <div className="flex flex-col gap-2">
-              <a href="#" className="rounded px-2 py-2 hover:bg-white/10">Domov</a>
-              <a href="#" className="rounded px-2 py-2 hover:bg-white/10">Ponudba</a>
-              <a href="#" className="rounded px-2 py-2 hover:bg-white/10">Kontakt</a>
-              <a href="#" className="rounded px-2 py-2 hover:bg-white/10">Ekipa</a>
-              <a href="#rezervacija" className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg border border-transparent bg-[#fca95c] px-4 py-2 text-sm font-semibold text-neutral-900 shadow">Naroči se</a>
+              <a href="#hero" className="rounded px-2 py-2 hover:bg-white/10" onClick={() => setMenuOpen(false)}>Domov</a>
+              <a href="#cenik" className="rounded px-2 py-2 hover:bg-white/10" onClick={() => setMenuOpen(false)}>Ponudba</a>
+              <a href="#kontakt" className="rounded px-2 py-2 hover:bg-white/10" onClick={() => setMenuOpen(false)}>Kontakt</a>
+              <a href="#ekipa" className="rounded px-2 py-2 hover:bg-white/10" onClick={() => setMenuOpen(false)}>Ekipa</a>
+              <a href="http://form.lime-booking.com/sl/groomi" className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg border border-transparent bg-[#fca95c] px-4 py-2 text-sm font-semibold text-neutral-900 shadow">Naroči se</a>
             </div>
           </div>
         )}

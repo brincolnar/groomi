@@ -1,47 +1,111 @@
+import { useState, useEffect, useRef } from 'react'
 import heroImage from '../assets/hero.jpg'
 import heroWebp from '../assets/hero.webp'
 import plantwallImage from '../assets/congogreen.png'
+import heroVideo from '../assets/groomiherovideo.mp4'
 
 function Hero() {
+  const [displayedText, setDisplayedText] = useState('')
+  const [showParagraph, setShowParagraph] = useState(false)
+  const [showCursor, setShowCursor] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
+  const fullText = 'Najboljši barber v Domžalah.'
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+          } else {
+            // Reset when scrolling away
+            setIsVisible(false)
+            setDisplayedText('')
+            setShowParagraph(false)
+            setShowCursor(true)
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isVisible) {
+      let currentIndex = 0
+      const typingInterval = setInterval(() => {
+        if (currentIndex <= fullText.length) {
+          setDisplayedText(fullText.slice(0, currentIndex))
+          currentIndex++
+        } else {
+          clearInterval(typingInterval)
+          // Hide cursor after typing is complete
+          setShowCursor(false)
+          // Show paragraph after typing is complete
+          setTimeout(() => {
+            setShowParagraph(true)
+          }, 300)
+        }
+      }, 80) // 80ms per character
+
+      return () => clearInterval(typingInterval)
+    }
+  }, [isVisible])
+
   return (
-    <main className="relative overflow-hidden text-white">
+    <main id="hero" ref={sectionRef} className="relative overflow-hidden text-white h-screen">
       <div aria-hidden="true" className="absolute inset-0">
-        <picture>
-          <source type="image/webp" srcSet={heroWebp} />
-          <img
-            src={heroImage}
-            alt=""
-            loading="eager"
-            decoding="async"
-            fetchpriority="high"
-            className="h-full w-full object-cover"
-          />
-        </picture>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
       </div>
       <div className="absolute inset-0 opacity-55 bg-radial from-groomiblue-dark to-groomiblue-verydark to-75%" aria-hidden="true"></div>
-      <div className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-16 md:pt-36">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-          {/* Left column: copy + reservation card below */}
-          <div className="flex flex-col items-start gap-6">
-            <h1 className="mb-2 text-3xl font-semibold md:text-5xl"><span className="text-groomizenf-dark">Profesionalna</span> nega za sodobnega <span className="text-groomizenf-dark">moškega.</span></h1>
-            <p className="max-w-xl text-lg leading-6 text-white">
-              Pri nas ne gre le za striženje – gre za celostno izkušnjo.
-              Z vrhunskim znanjem, pozornostjo do detajlov in osebnim pristopom poskrbimo, da vsak moški izstopi
-              samozavesten, urejen in sproščen.
-            </p>
-
-            {/* Rezervacija - below paragraph, left aligned */}
-            <div id="rezervacija" className="w-full max-w-md mt-4">
-                    <a
-                      type="submit"
-                      href='http://form.lime-booking.com/sl/groomi'
-                      className="inline-flex items-center gap-2 bg-groomizenf-dark cursor-pointer rounded-lg px-7 py-3 text-sm font-semibold text-black shadow-[0_8px_20px_rgba(0,0,0,0.25)]  backdrop-blur-md transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#ed570c] hover:shadow-[0_12px_28px_rgba(0,0,0,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#fca95c]/40"
-                    >
-                      <span className="text-base font-medium tracking-wide">Naroči se</span>
-                      <span aria-hidden="true" className="text-lg">→</span>
-                    </a>
-            </div>
-          </div>
+      <div className="relative z-10 h-full flex items-center mx-auto max-w-6xl px-4">
+        <div className="flex flex-col items-start gap-6 w-full">
+          <h1 className="mb-2 text-[42px] font-semibold md:text-[70px] leading-tight min-h-[60px] md:min-h-[100px]">
+            {displayedText.split(' ').map((word, index) => {
+              const isHighlighted = word === 'Najboljši' || word === 'Domžalah.'
+              return (
+                <span key={index}>
+                  {isHighlighted ? (
+                    <span className="text-groomizenf">{word}</span>
+                  ) : (
+                    word
+                  )}
+                  {index < displayedText.split(' ').length - 1 && ' '}
+                </span>
+              )
+            })}
+            {showCursor && <span className="animate-pulse">|</span>}
+          </h1>
+          <p 
+            className={`text-[25px] leading-9 text-white transition-all duration-1000 ${
+              showParagraph 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+          >
+            Odkrijte edinstveno doživetje, kjer se strokovna natančnost sreča z nepozabno atmosfero. 
+            Pri nas vsak obisk postane ritual, ki vas bo navdušil od prve do zadnje minute – 
+            od perfekcije striženja do sproščujoče izkušnje, ki jo boste želeli ponoviti.
+          </p>
         </div>
       </div>
     </main>

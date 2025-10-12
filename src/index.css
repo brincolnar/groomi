@@ -7,10 +7,17 @@
 }
 
 @theme {
-  --color-groomiblue: #8EACCD;
-  --color-groomiblue-dark: #4E7EB1;
-  --color-groomiblue-verydark: #325171;
-  --color-groomizenf: #FEF9D9;
-  --color-groomizenf-dark: #FCEB81;
+  --color-groomiblue: #0048be;
+  --color-groomiblue-dark: #003a98;
+  --color-groomiblue-verydark: #002b72;
+  --color-groomizenf: #f4b41d;
+  --color-groomizenf-dark: #c39017;
   --color-plantwall: #C3E38D;
+
+  --color-groomiblue-old: #8EACCD;
+  --color-groomiblue-dark-old: #4E7EB1;
+  --color-groomiblue-verydark-old: #325171;
+  --color-groomizenf-old: #FEF9D9;
+  --color-groomizenf-dark-old: #FCEB81;
+  --color-plantwall-old: #C3E38D;
 }
