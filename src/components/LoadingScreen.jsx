@@ -80,7 +80,7 @@ function LoadingScreen({ onComplete }) {
         
         {/* Statement - word by word animation */}
         <div className="flex flex-col items-center gap-6 w-full max-w-2xl px-8">
-          <div className="text-4xl font-medium text-white text-center">
+          <div className="text-2xl font-medium text-white text-center">
             {words.map((word, index) => {
               const isHighlighted = word === 'boljšo' || word === 'tebe...'
               return (

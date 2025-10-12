@@ -46,7 +46,7 @@ function Footer() {
                 <div>Sob - Ned: 8.00 - 20.00</div>
               </div>
               <a
-                href="#rezervacija"
+                href="http://form.lime-booking.com/sl/groomi"
                 className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-1 text-xs font-semibold text-white shadow-[0_6px_14px_rgba(0,0,0,0.25)] transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_10px_18px_rgba(0,0,0,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/30"
               >
                 <span className="text-sm font-medium tracking-wide">Naroči se</span>
