@@ -10,7 +10,7 @@ function Hero() {
   const [showCursor, setShowCursor] = useState(true)
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
-  const fullText = 'Najboljši barber v Domžalah.'
+  const fullText = 'Premium grooming izkušnja.'
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -79,9 +79,9 @@ function Hero() {
       <div className="absolute inset-0 bg-radial from-black/60 via-black/85 to-black to-90%" aria-hidden="true"></div>
       <div className="relative z-10 h-full flex items-center mx-auto max-w-6xl px-4">
         <div className="flex flex-col items-start gap-6 w-full">
-          <h1 className="mb-2 text-[42px] font-semibold md:text-[70px] leading-tight min-h-[60px] md:min-h-[100px]">
+          <h1 className="mb-2 text-[42px] font-semibold md:text-[70px] leading-tight min-h-[110px] md:min-h-[140px]">
             {displayedText.split(' ').map((word, index) => {
-              const isHighlighted = word === 'Najboljši' || word === 'Domžalah.'
+              const isHighlighted = word === 'Premium' || word === 'izkušnja.'
               return (
                 <span key={index}>
                   {isHighlighted ? (

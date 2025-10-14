@@ -74,12 +74,12 @@ function LoadingScreen({ onComplete }) {
           <img
             src={groomiLogo}
             alt="Groomi Barbershop"
-            className="h-96 w-auto"
+            className="h-48 md:h-96 w-auto"
           />
         </div>
         
         {/* Statement - word by word animation */}
-        <div className="flex flex-col items-center gap-6 w-full max-w-2xl px-8">
+        <div className="flex flex-col items-center gap-6 w-full max-w-2xl px-4 md:px-8">
           <div className="text-2xl font-medium text-white text-center">
             {words.map((word, index) => {
               const isHighlighted = word === 'Groomi'
