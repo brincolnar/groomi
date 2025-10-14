@@ -100,7 +100,7 @@ function Cenik() {
   }
 
   return (
-    <section id="cenik" ref={sectionRef} className="bg-groomiblue py-28 md:py-36 text-black">
+    <section id="cenik" ref={sectionRef} className="bg-stone-900 py-28 md:py-36 text-black">
       <div className="mx-auto max-w-6xl px-4">
         <div 
           ref={titleRef}
@@ -110,8 +110,8 @@ function Cenik() {
               : 'opacity-0 translate-y-8'
           }`}
         >
-          <h2 className="text-3xl font-bold text-white md:text-5xl">What's <span className="text-groomizenf">the</span> Damage? 💈</h2>
-          <p className="text-xl text-white/80 mt-4">Stay sharp — brez da režeš proračun.</p>
+          <h2 className="text-3xl font-bold text-white md:text-5xl">Cenik <span className="text-groomizenf">storitev</span></h2>
+          <p className="text-xl text-white/80 mt-4">Profesionalna nega za vsakega.</p>
         </div>
         <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:items-start">
           <div>
@@ -126,8 +126,8 @@ function Cenik() {
                   }`}
                 >
                   <div className="text-white">
-                    <div className="text-4xl font-bold mb-2 md:text-5xl">{item.name}</div>
-                    <div className="text-6xl font-black text-groomizenf md:text-7xl">{item.price}</div>
+                    <div className="text-2xl font-bold mb-2 md:text-3xl">{item.name}</div>
+                    <div className="text-4xl font-black text-groomizenf md:text-5xl">{item.price}</div>
                   </div>
                 </li>
               ))}
@@ -143,7 +143,7 @@ function Cenik() {
                 {testimonials.map((_, index) => (
                   <span
                     key={index}
-                    className={'h-0.5 w-10 ' + (index === activeIndex ? 'bg-groomiblue' : 'bg-groomizenf-dark')}
+                    className={'h-0.5 w-10 ' + (index === activeIndex ? 'bg-amber-900' : 'bg-groomizenf-dark')}
                   />
                 ))}
               </div>
@@ -152,7 +152,7 @@ function Cenik() {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-groomiblue text-lg text-groomiblue hover:bg-groomizenf-dark"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-amber-900 text-lg text-amber-900 hover:bg-groomizenf-dark"
                   aria-label="Prejšnja izjava"
                 >
                   ←
@@ -160,7 +160,7 @@ function Cenik() {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-groomiblue text-lg text-groomiblue hover:bg-groomizenf-dark"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-amber-900 text-lg text-amber-900 hover:bg-groomizenf-dark"
                   aria-label="Naslednja izjava"
                 >
                   →

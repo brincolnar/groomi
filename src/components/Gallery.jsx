@@ -27,7 +27,7 @@ function Gallery() {
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
 
-  const titleWords = ["Proof", "We", "Don't", "Miss"]
+  const titleWords = ["Naše", "delo"]
 
   // Title typing animation
   useEffect(() => {
@@ -135,7 +135,7 @@ function Gallery() {
   }
 
   return (
-    <section ref={sectionRef} id="galerija" className="bg-groomiblue py-28 md:py-36 text-white overflow-hidden">
+    <section ref={sectionRef} id="galerija" className="bg-stone-900 py-28 md:py-36 text-white overflow-hidden">
       <div ref={titleRef} className="mx-auto max-w-7xl px-4 mb-16">
         <h2 className="text-3xl font-bold text-white md:text-5xl">
           {titleWords.map((word, index) => (
@@ -143,7 +143,7 @@ function Gallery() {
               key={index}
               className={`transition-opacity duration-500 ${
                 index < visibleWords ? 'opacity-100' : 'opacity-0'
-              } ${word === 'Miss' ? 'text-groomizenf' : ''}`}
+              } ${word === 'delo' ? 'text-groomizenf' : ''}`}
             >
               {word}
               {index < titleWords.length - 1 && ' '}

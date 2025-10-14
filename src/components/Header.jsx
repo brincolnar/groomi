@@ -66,7 +66,7 @@ function Header() {
               <a href="#cenik" className="rounded px-2 py-2 hover:bg-white/10" onClick={() => setMenuOpen(false)}>Ponudba</a>
               <a href="#kontakt" className="rounded px-2 py-2 hover:bg-white/10" onClick={() => setMenuOpen(false)}>Kontakt</a>
               <a href="#ekipa" className="rounded px-2 py-2 hover:bg-white/10" onClick={() => setMenuOpen(false)}>Ekipa</a>
-              <a href="http://form.lime-booking.com/sl/groomi" className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg border border-transparent bg-[#fca95c] px-4 py-2 text-sm font-semibold text-neutral-900 shadow">Naroči se</a>
+              <a href="http://form.lime-booking.com/sl/groomi" className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg border border-transparent bg-groomizenf px-4 py-2 text-sm font-semibold text-neutral-900 shadow">Naroči se</a>
             </div>
           </div>
         )}

@@ -7,7 +7,7 @@ function LoadingScreen({ onComplete }) {
   const [visibleWords, setVisibleWords] = useState(0)
   const [loadingProgress, setLoadingProgress] = useState(0)
 
-  const statement = "Nalagam boljšo verzijo tebe..."
+  const statement = "Stay Groomi"
   const words = statement.split(' ')
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function LoadingScreen({ onComplete }) {
   }, [showStatement])
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-groomiblue">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-stone-900">
       <div className="flex flex-col items-center justify-center space-y-8">
         {/* Logo with fade-in animation */}
         <div 
@@ -82,7 +82,7 @@ function LoadingScreen({ onComplete }) {
         <div className="flex flex-col items-center gap-6 w-full max-w-2xl px-8">
           <div className="text-2xl font-medium text-white text-center">
             {words.map((word, index) => {
-              const isHighlighted = word === 'boljšo' || word === 'tebe...'
+              const isHighlighted = word === 'Groomi'
               return (
                 <span
                   key={index}

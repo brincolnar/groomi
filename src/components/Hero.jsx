@@ -76,7 +76,7 @@ function Hero() {
           <source src={heroVideo} type="video/mp4" />
         </video>
       </div>
-      <div className="absolute inset-0 opacity-55 bg-radial from-groomiblue-dark to-groomiblue-verydark to-75%" aria-hidden="true"></div>
+      <div className="absolute inset-0 bg-radial from-black/60 via-black/85 to-black to-90%" aria-hidden="true"></div>
       <div className="relative z-10 h-full flex items-center mx-auto max-w-6xl px-4">
         <div className="flex flex-col items-start gap-6 w-full">
           <h1 className="mb-2 text-[42px] font-semibold md:text-[70px] leading-tight min-h-[60px] md:min-h-[100px]">

@@ -24,36 +24,8 @@ const teamMembers = [
 ]
 
 function Ekipa() {
-  const [titleVisible, setTitleVisible] = useState(false)
   const [visibleMembers, setVisibleMembers] = useState([])
-  const titleRef = useRef(null)
   const memberRefs = useRef([])
-
-  // Animate main title
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setTitleVisible(true)
-          } else {
-            setTitleVisible(false)
-          }
-        })
-      },
-      { threshold: 0.5 }
-    )
-
-    if (titleRef.current) {
-      observer.observe(titleRef.current)
-    }
-
-    return () => {
-      if (titleRef.current) {
-        observer.unobserve(titleRef.current)
-      }
-    }
-  }, [])
 
   // Animate team members individually
   useEffect(() => {
@@ -90,21 +62,6 @@ function Ekipa() {
   return (
     <section id="ekipa" className="bg-white py-28 md:py-36">
       <div className="mx-auto max-w-6xl px-4">
-        {/* Main title */}
-        <div 
-          ref={titleRef}
-          className={`mb-24 transition-all duration-1000 ${
-            titleVisible 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <h2 className="text-3xl font-bold text-groomiblue md:text-5xl">
-          Tvoji <span className="text-groomizenf">mojstri</span> za škarjami ✂️
-          </h2>
-          <p className="text-xl text-neutral-600 mt-4">Poznamo tvojo glavo bolje kot tvoja bivša.</p>
-        </div>
-
         {/* Team members */}
         <div className="space-y-32">
           {teamMembers.map((member, index) => (
